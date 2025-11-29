@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Knowledge Base - Поиск</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 AI Knowledge Base</h1>
+            <p class="subtitle">Умный поиск по вашей базе знаний</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Поиск по документам..." />
+                <button id="searchBtn">🔍 Искать</button>
+            </div>
+
+            <div class="search-types">
+                <label class="radio-label">
+                    <input type="radio" name="searchType" value="combined" checked />
+                    <span>🔍 Полнотекстовый</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="searchType" value="semantic" />
+                    <span>🧠 Семантический</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="searchType" value="hybrid" />
+                    <span>⚡ Гибридный</span>
+                </label>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label>📂 Категория:</label>
+                    <select id="categoryFilter">
+                        <option value="">Все категории</option>
+                        <option value="AI & Machine Learning">🔴 AI & Machine Learning</option>
+                        <option value="Programming">🔵 Programming</option>
+                        <option value="Business">🟢 Business</option>
+                        <option value="Personal">🟡 Personal</option>
+                        <option value="Research">🟠 Research</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>🏷️ Теги:</label>
+                    <input type="text" id="tagsFilter" placeholder="python, ai, database..." />
+                </div>
+
+                <div class="filter-group">
+                    <label>📝 Тип:</label>
+                    <select id="typeFilter">
+                        <option value="">Все типы</option>
+                        <option value="article">Статья</option>
+                        <option value="note">Заметка</option>
+                        <option value="tutorial">Туториал</option>
+                        <option value="email">Письмо</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-value" id="totalDocs">0</div>
+                <div class="stat-label">Документов</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalCategories">5</div>
+                <div class="stat-label">Категорий</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalSearches">0</div>
+                <div class="stat-label">Поисков</div>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultsSection" style="display:none;">
+            <div class="results-header">
+                <h2>Результаты</h2>
+                <span id="resultsCount">0 документов</span>
+            </div>
+            <div id="resultsContainer"></div>
+        </div>
+
+        <div class="add-section">
+            <button id="toggleAddBtn" class="add-btn">➕ Добавить документ</button>
+
+            <div id="addForm" style="display:none;">
+                <h3>Добавить новый документ</h3>
+                <form id="documentForm">
+                    <input type="text" id="docTitle" placeholder="Заголовок" required />
+                    <textarea id="docContent" placeholder="Содержимое документа..." rows="6" required></textarea>
+                    <input type="text" id="docSummary" placeholder="Краткое описание (опционально)" />
+                    <input type="text" id="docTags" placeholder="Теги (через запятую): python, ai, tutorial" />
+                    <select id="docCategory">
+                        <option value="">Выберите категорию</option>
+                        <option value="AI & Machine Learning">🔴 AI & Machine Learning</option>
+                        <option value="Programming">🔵 Programming</option>
+                        <option value="Business">🟢 Business</option>
+                        <option value="Personal">🟡 Personal</option>
+                        <option value="Research">🟠 Research</option>
+                    </select>
+                    <select id="docType">
+                        <option value="note">Заметка</option>
+                        <option value="article">Статья</option>
+                        <option value="tutorial">Туториал</option>
+                    </select>
+                    <button type="submit">💾 Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Supabase + PostgreSQL + pgvector</p>
+            <div class="footer-links">
+                <a href="#" id="viewDocsBtn">📚 Документация</a>
+                <a href="#" id="statsBtn">📊 Статистика</a>
+                <a href="https://github.com/sCOSTAkg">💻 GitHub</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
